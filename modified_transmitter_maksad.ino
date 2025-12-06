@@ -8,11 +8,12 @@
 #define analog A0
 //making an object
 RF24 hydra(CE,CSN);
-//first address 0th and the second address is 1st
+//first address 0th and the second address is 1st.
 uint8_t address[][6]= {"rain0","fall0"};
 bool role;
 byte reading;
 int calibration=21;
+
 
 struct datasets {
     byte x1;
@@ -49,7 +50,7 @@ void setup() {
     calibration= map(analogRead(analog),0,1024,0,250);
     Serial.println(calibration);
   }
-  Serial.print("calibration value for j1;");
+  Serial.print("calibration value for j1 ;");
   Serial.println(calibration);
   delay(500);
 }
@@ -79,7 +80,7 @@ void loop() {
     digitalWrite(s1, 1);
     //delay(1);
     data.y2 = map(analogRead(analog),0,1024,9,245);
-    delay(1);
+    delay(2);
     transmit();
 }
 void transmit(){
